@@ -1,0 +1,201 @@
+<html>
+
+<head>
+
+    <!-- Load ioBroker scripts and styles-->
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+
+    <script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+    <script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../lib/js/materialize.js"></script>
+    <script type="text/javascript" src="../../js/adapter-settings.js"></script>
+
+    <!-- Load our own files -->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="words.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
+    <script type="text/javascript">
+
+        function updateInstallationSection() {
+            const adapterWithInstance = this.adapter + "."+ this.instance
+            console.log("updateInstallationSection: adapterWithInstance: " + adapterWithInstance)
+
+            getState(adapterWithInstance + ".info.installation", function (err, res) {
+
+                    if(err) {
+                        console.log("getState err: "+ err, err);
+                    }
+
+                    if(res && res.val) {
+                        let installation = null
+                        try{
+                            installation = btoa(res.val)
+                        } catch(e) {
+                            alert("Load installation config error: " + e)
+                        }
+
+                        if(installation) {
+
+                            $('#installation').removeClass("hide")
+
+                            let link = "https://m.mnode.net/app#installation=" + installation
+                            let elLink = $('#installationLink')
+                            elLink.attr("href", link)
+                            elLink.removeClass("hide")
+
+                            let linkAndroid = "https://m.mnode.net/installation?installation=" + installation
+                            let elLinkAndroid = $('#installationLinkAndroid')
+                            elLinkAndroid .attr("href", linkAndroid)
+                            elLinkAndroid .removeClass("hide")
+
+                            let linkIos = "https://m.mnode.net/?installation=" + installation
+                            let elLinkIos = $('#installationLinkIos')
+                            elLinkIos.attr("href", linkIos)
+                            elLinkIos.removeClass("hide")
+
+                            let linkDev = "https://m.mnode.net/appbeta#installation=" + installation
+                            let elLinkDev = $('#installationLinkDev')
+                            elLinkDev.attr("href", linkDev)
+                            elLinkDev.removeClass("hide")
+
+                            let elQrcode = $('#qrcode')
+                            elQrcode.empty();
+                            elQrcode.removeClass("hide")
+
+                            new QRCode(document.getElementById('qrcode'), {
+                              text: installation,
+                              width: 512,
+                              height: 512,
+                              colorDark : '#000',
+                              colorLight : '#fff',
+                              correctLevel : QRCode.CorrectLevel.H
+                            });
+
+                        }
+                    }
+
+                    setTimeout(() => { updateInstallationSection(); }, 5000);
+
+                } // getState Callback
+            )// getState
+        }//updateInstallationSection
+
+        // This will be called by the admin adapter when the settings page loads
+        function load(settings, onChange) {
+            // example: select elements with id=key and class=value and insert value
+            if (!settings) return;
+
+            updateInstallationSection()
+
+            $('.value').each(function () {
+                var $key = $(this);
+                var id = $key.attr('id');
+                if ($key.attr('type') === 'checkbox') {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.prop('checked', settings[id])
+                        .on('change', () => onChange())
+                        ;
+                } else {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.val(settings[id])
+                        .on('change', () => onChange())
+                        .on('keyup', () => onChange())
+                        ;
+                }
+            });
+
+            onChange(false);
+
+            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+            if (M) M.updateTextFields();
+        }
+
+        // This will be called by the admin adapter when the user presses the save button
+        function save(callback) {
+            // example: select elements with class=value and build settings object
+            var obj = {};
+            $('.value').each(function () {
+                var $this = $(this);
+                if ($this.attr('type') === 'checkbox') {
+                    obj[$this.attr('id')] = $this.prop('checked');
+                } else if ($this.attr('type') === 'number') {
+                    obj[$this.attr('id')] = parseFloat($this.val());
+                } else {
+                    obj[$this.attr('id')] = $this.val();
+                }
+            });
+            callback(obj);
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class="m adapter-container">
+
+    <div class="row">
+        <div class="col s12 m4 l2">
+            <img src="mnode-iot.png" class="logo">
+        </div>
+    </div>
+
+    <h4 class="translate">Settings</h4>
+
+    <div class="row hide" >
+        <div class="col s12 input-field">
+            <input type="text" class="value" id="optionDbName"/>
+            <label for="optionDbName" class="translate">optionDbName</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 input-field">
+            <input type="text" class="value" id="username"/>
+            <label for="username" class="translate">InstallUsernameHelp</label>
+        </div>
+
+        <div class="col s6 input-field">
+            <input type="password" class="value" id="password"/>
+            <label for="password" class="translate">InstallPasswordHelp</label>
+        </div>
+    </div>
+
+    <span id="installation" class="hide">
+
+		<h4 class="translate">Installation</h4>
+		<p class="translate">InstallHelp</p>
+
+		<div class="row">
+			<div class="col s12">
+				<p class="translate">InstallLinkWebHelp</p>
+				<a id="installationLink" target="_blank" class="btn hide translate">InstallLink</a>
+                <a id="installationLinkDev" target="_blank" class="btn hide translate">InstallLink Beta</a>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="col s12">
+				<p class="translate">InstallLinkDeviceHelp</p>
+                <a id="installationLinkAndroid" target="_blank" class="btn hide translate">InstallLink Android</a>
+                <a id="installationLinkIos" target="_blank" class="btn hide translate">InstallLink iOS</a>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="col s12">
+				<p class="translate">InstallQrCodeHelp</p>
+				<div id="qrcode" class="qrcode hide"></div>
+			</div>
+		</div>
+	</span>
+
+</div>
+
+</body>
+
+</html>

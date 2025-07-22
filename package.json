@@ -1,0 +1,53 @@
+{
+    "name": "iobroker.mnode-iot",
+    "version": "3.1.0-Ad3e790f3",
+    "main": "iobroker.mnode-iot.js",
+    "types": "iobroker.mnode-iot.d.ts",
+    "devDependencies": {
+        "copy-webpack-plugin": "9.1.0",
+        "@iobroker/testing": "^4.1.3"
+    },
+    "dependencies": {
+        "sql.js": "1.6.2",
+        "sqlite3": "^5.1.2",
+        "@cashapp/sqldelight-sqljs-worker": "2.0.2",
+        "ws": "8.5.0",
+        "format-util": "^1.0.5",
+        "pako": "2.1.0",
+        "mqtt": "4.3.7",
+        "@js-joda/core": "3.2.0",
+        "@iobroker/adapter-core": "^3.2.3",
+        "typescript": "5.1.6"
+    },
+    "peerDependencies": {
+        
+    },
+    "optionalDependencies": {
+        
+    },
+    "bundledDependencies": [
+        
+    ],
+    "description": "ioBroker adapter - MobileNode - your home connection",
+    "author": "mnode@adoubleu.de",
+    "license": "BUSL-1.1",
+    "keywords": [
+        "iot",
+        "remote",
+        "remote control",
+        "ioBroker"
+    ],
+    "files": [
+        "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).{json,json5}",
+        "admin{,/!(src)/**}/*.{html,css,png,svg,jpg,js}",
+        "io-package.json",
+        "iobroker.mnode-iot.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adoubleu/ioBroker.mnode-iot"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}

@@ -1,0 +1,99 @@
+{
+    "common": {
+        "name": "mnode-iot",
+        "version": "3.1.0-Ad3e790f3",
+        "news": {
+            "3.1.0-Ad3e790f3": {
+                "en": "initial release",
+                "de": "Erstver\u00f6ffentlichung",
+                "ru": "\u041d\u0430\u0447\u0430\u043b\u044c\u043d\u0430\u044f \u0432\u0435\u0440\u0441\u0438\u044f",
+                "pt": "lan\u00e7amento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Premi\u00e8re version",
+                "it": "Versione iniziale",
+                "es": "Versi\u00f3n inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "\u041f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0430 \u0432\u0435\u0440\u0441\u0456\u044f",
+                "zh-cn": "\u9996\u6b21\u51fa\u7248"
+            }
+        },
+        "titleLang": {
+            "en": "mnode-iot",
+            "de": "mnode-iot",
+            "ru": "mnode-iot",
+            "pt": "mnode-iot",
+            "nl": "mnode-iot",
+            "fr": "mnode-iot",
+            "it": "mnode-iot",
+            "es": "mnode-iot",
+            "pl": "mnode-iot",
+            "uk": "mnode-iot",
+            "zh-cn": "mnode-iot"
+        },
+        "desc": {
+            "en": "MobileNode - your home connection",
+            "de": "MobileNode \u2013 your home connection",
+            "ru": "MobileNode \u2013 \u0432\u0430\u0448 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0434\u043e\u0441\u0442\u0443\u043f",
+            "pt": "MobileNode \u2013 sua conex\u00e3o dom\u00e9stica",
+            "nl": "MobileNode \u2013 jouw thuisverbinding",
+            "fr": "MobileNode \u2013 votre connexion \u00e0 la maison",
+            "it": "MobileNode \u2013 la tua connessione domestica",
+            "es": "MobileNode \u2013 tu conexi\u00f3n dom\u00e9stica",
+            "pl": "MobileNode \u2013 twoje po\u0142\u0105czenie z domem",
+            "uk": "MobileNode \u2013 \u0432\u0430\u0448 \u0434\u043e\u043c\u0430\u0448\u043d\u0456\u0439 \u0437\u0432\u2019\u044f\u0437\u043e\u043a",
+            "zh-cn": "MobileNode \u2013 \u60a8\u7684\u5bb6\u5ead\u8fde\u63a5"
+        },
+        "authors": [
+            "Adrian Werner <mnode@adoubleu.de>"
+        ],
+        "keywords": [
+            "iot",
+            "web",
+            "Cloud",
+            "communication",
+            "control",
+            "remote control"
+        ],
+        "licenseInformation": {
+            "type": "commercial",
+            "license": "BUSL-1.1",
+            "link": "https://github.com/adoubleu/ioBroker.mnode-iot/blob/main/LICENSE"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "mnode-iot.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/adoubleu/ioBroker.mnode-iot/main/admin/mnode-iot.png",
+        "readme": "https://github.com/adoubleu/ioBroker.mnode-iot/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "daemon",
+        "type": "communication",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "materialize"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": "7.6.3"
+            }
+        ]
+    },
+    "native": {
+        "optionDbName": "",
+        "username": "",
+        "password": ""
+    },
+    "objects": [
+        
+    ],
+    "instanceObjects": [
+        
+    ]
+}

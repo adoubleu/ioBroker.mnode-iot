@@ -1,0 +1,35 @@
+Business Source License 1.1
+
+Licensor: Adrian Werner - adoubleu // mobile node
+
+Licensed Work: The ioBroker adapter "mnode-iot" as distributed in minified and compiled form via npm or other package registries.
+
+Change Date: 2099-12-31
+Change License: None
+
+Use Limitation:
+
+- This software is provided only in compiled and minified form.
+- The source code is not distributed.
+- You may not reverse engineer, decompile, modify, or distribute modified versions.
+- Commercial use of this software is only permitted under a separate, written license agreement with the Licensor.
+- Private or non-commercial use is allowed for evaluation purposes only.
+
+For commercial licensing inquiries, contact:
+
+📧 [mnode@adoubleu.de]
+
+---
+
+This Licensed Work is governed by the Business Source License 1.1 (BUSL-1.1), available at:
+https://mariadb.com/bsl11
+
+---
+
+Disclaimer of Warranty and Liability:
+
+This software is provided “as is,” without warranty of any kind, express or implied.
+The Licensor shall not be liable for any damages or losses arising from the use of the Licensed Work, including but not limited to direct, indirect, incidental, special, exemplary, or consequential damages.
+Use of this software is at your own risk.
+
+Unless a commercial license is granted by the Licensor, all rights are reserved.
